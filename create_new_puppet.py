@@ -12,11 +12,15 @@ class CreateNewPuppetBase(sublime_plugin.WindowCommand):
     def create_puppet(self, puppet_name):
         for dir in self.dirs:
             puppet_path = dir + "/" + puppet_name
-            self.create_folder(puppet_path);
+            self.create_folder(puppet_path)
 
             for file in self.file_templates:
                 print("created file: " + puppet_path + "/" + puppet_name + file)
-                self.create_file(puppet_path + "/" + puppet_name + file);
+                self.create_file(puppet_path + "/" + puppet_name + file)
+
+            template_path = dir + "/" + puppet_name + "/templates"
+            self.create_folder(template_path)
+            self.create_file(template_path + "/" + puppet_name + "_template.tpl")
 
     def set_file_templates(self, list):
         self.file_templates = list
@@ -25,7 +29,7 @@ class CreateNewPuppetBase(sublime_plugin.WindowCommand):
         self.create_puppet(puppet_name)
 
         self.window.active_view().set_status("", "[Puppetmaster] === Created new puppet: " + puppet_name + " ===")
-        self.window.open_file(self.dirs[0] + "/" + puppet_name + "/" + puppet_name + "_module.js")
+        self.window.open_file(self.dirs[0] + "/" + puppet_name + "/" + puppet_name + "_controller.js")
 
     def on_cancel(self):
         self.dirs = None
@@ -54,7 +58,7 @@ class CreateNewPuppet(CreateNewPuppetBase):
             self.window.active_view().set_status("", "[Puppetmaster] === Select a folder for this command! ===")
             return
 
-        file_templates = [ "_module.js", "_view.js" ]
+        file_templates = [ "_controller.js", "_view.js" ]
         self.set_file_templates(file_templates)
 
         self.doCommand(dirs)
