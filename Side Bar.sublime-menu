@@ -1,0 +1,4 @@
+[
+	{ "caption": "New Puppet...", "command": "create_new_puppet",  "args": { "dirs": [] } },
+	{ "caption": "-", "id": "end" }
+]

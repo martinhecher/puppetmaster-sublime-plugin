@@ -1,0 +1,65 @@
+<snippet>
+	<content><![CDATA[
+define(["app", "${1:puppetmaster/puppetmaster}", "./$2_module.js"], function(App, Puppetmaster) {
+
+	App.module("${2:ModuleName}", function($2) {
+
+		$2.${3:MyItemView} = Puppetmaster.ItemView.extend({
+
+			tagName: "${4:div}",
+
+			className: "${5:myclass}",
+
+			template: "${6:#my-item-tpl}",
+
+			events: {
+				"${7:click}": "${8:onClick}"
+			},
+
+			initialize: function() {
+				$9
+			},
+		});
+
+		$2.${10:MyEmptyItemView} = Puppetmaster.ItemView.extend({
+			template: "${11:#my-empty-item-tpl}",
+		});
+
+		$2.${12:MyCompositeView} = Puppetmaster.CompositeView.extend({
+
+					template: "#${13:wrapper-template-tpl}",
+
+					itemView: $2.$3,
+
+					emptyView: $2.$10,
+
+					ui: {
+
+					},
+
+					initialize: function() {
+
+					},
+
+					onShow: function() {
+						App.addResizeableView(this);
+						this.onResize();
+					},
+
+					onClose: function() {
+
+					},
+
+					onResize: function(window_width, window_height) {
+
+					}
+	})
+
+}); // end module definition
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>pm-compositeview</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

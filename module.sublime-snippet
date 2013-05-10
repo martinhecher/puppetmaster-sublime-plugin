@@ -1,0 +1,42 @@
+<snippet>
+	<content><![CDATA[
+define(["app", "${1:puppetmaster/puppetmaster}"], function(App, Puppetmaster) {
+
+	App.module("${2:ModuleName}", function($2) {
+
+		//
+		// module settings:
+		//
+
+		this.startWithParent = false;
+
+		//
+		// private:
+		//
+
+		$3
+
+		//
+		// public:
+		//
+
+		$4
+
+		//
+		// events:
+		//
+
+		this.on("start", function(options) {
+			$5
+		});
+
+	})
+
+}); // end module definition
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>pm-module</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>
